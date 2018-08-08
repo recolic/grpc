@@ -300,19 +300,19 @@ else
 TMPOUT = `mktemp /tmp/test-out-XXXXXX`
 endif
 
-CHECK_SHADOW_WORKS_CMD = $(CC) -std=c99 -Werror -Wshadow -o $(TMPOUT) -c test/build/shadow.c
+CHECK_SHADOW_WORKS_CMD = $(CC) -std=c99 -Wshadow -o $(TMPOUT) -c test/build/shadow.c
 HAS_WORKING_SHADOW = $(shell $(CHECK_SHADOW_WORKS_CMD) 2> /dev/null && echo true || echo false)
 ifeq ($(HAS_WORKING_SHADOW),true)
 W_SHADOW=-Wshadow
 NO_W_SHADOW=-Wno-shadow
 endif
-CHECK_EXTRA_SEMI_WORKS_CMD = $(CC) -std=c99 -Werror -Wextra-semi -o $(TMPOUT) -c test/build/extra-semi.c
+CHECK_EXTRA_SEMI_WORKS_CMD = $(CC) -std=c99 -Wextra-semi -o $(TMPOUT) -c test/build/extra-semi.c
 HAS_WORKING_EXTRA_SEMI = $(shell $(CHECK_EXTRA_SEMI_WORKS_CMD) 2> /dev/null && echo true || echo false)
 ifeq ($(HAS_WORKING_EXTRA_SEMI),true)
 W_EXTRA_SEMI=-Wextra-semi
 NO_W_EXTRA_SEMI=-Wno-extra-semi
 endif
-CHECK_NO_SHIFT_NEGATIVE_VALUE_WORKS_CMD = $(CC) -std=c99 -Werror -Wno-shift-negative-value -o $(TMPOUT) -c test/build/no-shift-negative-value.c
+CHECK_NO_SHIFT_NEGATIVE_VALUE_WORKS_CMD = $(CC) -std=c99 -Wno-shift-negative-value -o $(TMPOUT) -c test/build/no-shift-negative-value.c
 HAS_WORKING_NO_SHIFT_NEGATIVE_VALUE = $(shell $(CHECK_NO_SHIFT_NEGATIVE_VALUE_WORKS_CMD) 2> /dev/null && echo true || echo false)
 ifeq ($(HAS_WORKING_NO_SHIFT_NEGATIVE_VALUE),true)
 W_NO_SHIFT_NEGATIVE_VALUE=-Wno-shift-negative-value
@@ -334,7 +334,7 @@ CXXFLAGS += -std=c++11
 ifeq ($(SYSTEM),Darwin)
 CXXFLAGS += -stdlib=libc++
 endif
-CPPFLAGS += -g -Wall -Wextra -Werror -Wno-long-long -Wno-unused-parameter -DOSATOMIC_USE_INLINED=1 -Wno-deprecated-declarations
+CPPFLAGS += -g -Wall -Wextra -Wno-long-long -Wno-unused-parameter -DOSATOMIC_USE_INLINED=1 -Wno-deprecated-declarations
 COREFLAGS += -fno-rtti -fno-exceptions
 LDFLAGS += -g
 
